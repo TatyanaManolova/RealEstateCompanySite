@@ -1,0 +1,36 @@
+
+button {
+    font-size: 18px;
+    background-color: #B0313A;
+    color: #fff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    justify-content: center;
+}
+
+button:hover {
+   background-color: #344d92;
+}
+
+button a {
+  color: #fff; /* White text */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Buttons on the right */
+.property-buttons {
+  position: absolute; /* position: static; */
+  right: 20px; /* Align buttons to the right */
+  display: flex;
+  gap: 20px;
+}
+
+
+
+
+

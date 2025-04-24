@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <main>
+
+        {% if not rent_properties %}
+            <h2>За съжаление в момента няма оферти за предлагане</h2>
+        {% else %}
+            <div class="property-header">
+                <h2>Наеми</h2>
+                <div class="property-buttons">
+                  <button><a href="{% url 'sale' %}">Продажби</a></button>
+                  <button><a href="{% url 'home' %}">Всички оферти</a></button>
+                </div>
+            </div>
+
+          <section class="property-listings">
+            {% for rent_property in rent_properties %}
+                <div class="listing">
+                  <div class="watermarked-image">
+                    <img src="{{ rent_property.images.first.image.url }}" alt="Property Image">
+                    <img class="watermark-logo centered" src="{% static 'images/Лого ТОП ИМОТИ - ВТ НОВО с името БЕЗ ФОН.png' %}" alt="Watermark">
+                  </div>
+                  <div class="listing-info">
+                    <h3>{{ rent_property.title }}</h3>
+                    <p>{{ rent_property.area }} кв.м.</p>
+                    <p>€ {{ rent_property.price }}</p>
+                    <button><a href="{% url 'property_details' pk=rent_property.pk %}">виж повече . . .</a></button>
+                  </div>
+                </div>
+            {% endfor %}
+          </section>
+        {% endif %}
+    </main>
+
+{% endblock %}

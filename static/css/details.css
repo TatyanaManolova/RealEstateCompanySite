@@ -1,0 +1,239 @@
+
+
+  .property-details {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .property-details h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .property-images {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-image-container {
+    position: relative;
+    width: 80%;
+    max-width: 800px;
+  }
+
+  .main-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .arrow-left, .arrow-right {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .arrow-left {
+    left: 10px;
+  }
+
+  .arrow-right {
+    right: 10px;
+  }
+
+  .arrow-left:hover, .arrow-right:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .property-details-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .property-images {
+    flex: 1;
+    max-width: 600px;
+  }
+
+  .property-info {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+
+  }
+
+  .main-image-container {
+    position: relative;
+    width: 100%;
+  }
+
+  .main-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .thumbnail-images {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+  }
+
+  .thumbnail-images img {
+    width: 100px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s;
+    flex-shrink: 0;
+  }
+
+  .thumbnail-images img:hover {
+    border-color: #B0313A;
+  }
+
+
+
+  .property-info p {
+    font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 2px;
+  }
+
+
+
+  .property-info p strong {
+    color: #B0313A;
+  }
+
+  .property-price {
+    font-size: 34px;
+    color: #344d92;
+    font-weight: bold;
+    margin: 10px;
+  }
+
+  .property-info .description {
+    width: 100%;
+    max-width: 100%;
+    text-align: justify;
+  }
+
+     /* Main container */
+.watermarked-image {
+  position: relative;
+  display: inline-block;
+}
+
+/* Main property image */
+.watermarked-image img:first-child {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ✅ Watermark Logo */
+.watermark-logo {
+  position: absolute;
+
+  width: 70%; /* Control logo size */
+  opacity: 0.3; /* Semi-transparent */
+  pointer-events: none; /* Prevent right-click or selection */
+}
+
+/* Optional: Center the watermark */
+.watermarked-image .watermark-logo.centered {
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  width: 70%;
+  opacity: 0.3;
+}
+
+/* ✅ Thumbnail Container */
+.thumbnail-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+}
+
+/* ✅ Wrapper to Hide Overflow */
+.thumbnail-images-wrapper {
+  width: 500px; /* Adjust width of visible area */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+}
+
+/* ✅ Thumbnails Row */
+.thumbnail-images {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease-in-out;
+  white-space: nowrap; /* Prevent images from wrapping */
+}
+
+/* ✅ Individual Thumbnails */
+.thumbnail-images img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #ccc;
+  transition: border-color 0.3s;
+  flex-shrink: 0; /* Prevents images from shrinking */
+}
+
+.thumbnail-images img:hover {
+  border-color: #B0313A;
+}
+
+/* ✅ Arrows for Thumbnails - Match Main Image Arrows */
+.thumbnail-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+/* ✅ Left Arrow */
+.thumbnail-arrow.arrow-left {
+  left: 0;
+}
+
+/* ✅ Right Arrow */
+.thumbnail-arrow.arrow-right {
+  right: 0;
+}
+
+.thumbnail-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+

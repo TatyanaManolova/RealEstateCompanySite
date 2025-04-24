@@ -1,0 +1,175 @@
+
+/* ✅ DESKTOP NAVIGATION */
+@media (min-width: 601px) {
+
+  header nav .nav-bar {
+    display: flex;
+  }
+
+  header nav .nav-bar-mobile {
+    display: none;
+  }
+
+  main .property-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+  main .property-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    margin-left: auto;
+  }
+
+}
+
+/* ✅ MOBILE NAVIGATION */
+@media (max-width: 600px) {
+  /* Hide Desktop Navigation */
+  header nav .nav-bar {
+    display: none;
+  }
+
+  header nav .nav-bar-mobile {
+    display: flex;
+  }
+
+  main .property-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /*padding: 0 20px;*/
+    gap: 10px;
+  }
+
+  main .property-buttons {
+    position: static; /* Removes absolute positioning from desktop */
+    justify-content: center;
+    margin-top: 1px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+    /* Fix dropdown menu overflow on mobile */
+  header nav .dropdown-menu {
+    right: 0; /* Aligns it to the right edge of its parent */
+    left: auto; /* Prevent it from stretching to the left */
+    /*width: 60vw; /* Limit the width to fit smaller screens */
+    /*max-width: 300px; /* Optional: prevent it from getting too wide */
+    box-sizing: border-box; /* Ensures padding doesn't overflow */
+    overflow-x: hidden; /* Hide horizontal scroll if any */
+  }
+
+  main section .property-listings {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  main section .listing {
+    width: 90%; /* or 100% if you want full width */
+  }
+
+  main section .listing-info {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+
+  main section .listing-info h3,
+  main section .listing-info p,
+  main section .listing-info button {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Stack images and info vertically on mobile */
+  main .property-details-container {
+    flex-direction: column; /* Stack images and property info vertically */
+  }
+
+  main .property-images {
+    width: 100%; /* Make sure images take up the full width */
+    margin-bottom: 20px; /* Add space between images and info */
+  }
+
+  main .property-info {
+    width: 100%; /* Make the property info take up the full width */
+    margin-top: 20px; /* Space between images and property details */
+  }
+
+  /* Optional: Adjust font size for better readability on smaller screens */
+  main .property-info p {
+    font-size: 16px;
+  }
+
+  main .property-info p str {
+    font-size: 30px; /* Larger price text */
+  }
+
+  main .contact {
+    width: 100%; /* Ensure the contact section takes full width */
+    padding: 0 20px; /* Add padding for better spacing on mobile */
+
+  }
+
+  main .contact h2 {
+    font-size: 28px; /* Adjust heading size */
+    margin-bottom: 10px;
+  }
+
+  main .contact p {
+    font-size: 16px; /* Adjust paragraph size for better readability */
+    line-height: 1.5; /* Improve line spacing */
+    margin-bottom: 15px; /* Add spacing between paragraphs */
+  }
+
+  main .contact form {
+    display: grid;
+    gap: 15px;
+    width: 100%; /* Make form fields take full width */
+    max-width: 100%; /* Ensure form doesn't overflow */
+  }
+
+  main .contact label {
+    font-size: 18px; /* Adjust label font size */
+    color: #B0313A; /* Match the label color with the rest of the theme */
+    text-align: left; /* Left-align labels for better readability */
+  }
+
+  main .contact input,
+  main .contact textarea {
+    padding: 10px;
+    width: 90%; /* Make input fields full-width */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  main .contact textarea {
+    resize: vertical; /* Allow vertical resizing for the textarea */
+    min-height: 150px; /* Set a minimum height for the textarea */
+  }
+
+  main .contact button {
+    background-color: #B0313A; /* Red background */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 8px;
+    font-size: 18px; /* Adjust button font size */
+    transition: background-color 0.3s ease;
+    width: 90%;
+  }
+
+  main .contact button:hover {
+    background-color: #344d92; /* Dark background on hover */
+  }
+
+}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <section>
+    <h1>Добре дошли на сайта на агенцията за недвижими имоти ТОП ИМОТИ - ВТ</h1>
+
+    <p>Ние сме водеща агенция за недвижими имоти с многогодишен опит в посредничество за покупки, продажби и наеми на всички видове недвижими имоти.</p>
+    <p>Ще ви съдействаме да намерите най-доброто и желаното за вас</p>
+    <p>Нашата миссия е индивидуален подход към всеки клиент с юридическа подкрепа и съдействие за одобрение на кредити.</p>
+  </section>
+
+    {% if not properties %}
+        <h2>За съжаление в момента няма оферти за предлагане</h2>
+    {% else %}
+        <div class="property-header">
+            <h2>Само актуални оферти на изгодни цени</h2>
+            <div class="property-buttons">
+              <button><a href="{% url 'rent' %}">Наеми</a></button>
+              <button><a href="{% url 'sale' %}">Продажби</a></button>
+            </div>
+        </div>
+
+        <section class="property-listings">
+            {% for property in properties %}
+                <div class="listing">
+                  <div class="watermarked-image">
+                    <img src="{{ property.images.first.image.url }}" alt="Property Image">
+                    <img class="watermark-logo centered" src="{% static 'images/Лого ТОП ИМОТИ - ВТ НОВО с името БЕЗ ФОН.png' %}" alt="Watermark">
+                  </div>
+                  <div class="listing-info">
+                    <h3>{{ property.title }}</h3>
+                    <p>{{ property.area }} кв.м.</p>
+                    <p>€ {{ property.price }}</p>
+                    <button><a href="{% url 'property_details' pk=property.pk %}">Виж повече . . .</a></button>
+                  </div>
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+
+{% endblock %}
+

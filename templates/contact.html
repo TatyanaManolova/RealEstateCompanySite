@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <main>
+      <section class="contact">
+        <div>
+          <h2>Контакти</h2>
+          <p>При въпроси и запиствания не се колебайте, свържете се с нас</p>
+          <p> по телефон:  +358 88 637 57 96, +359 87 644 44 61 </p>
+          <p> по email:  topimoti-vt@mail.bg </p>
+        </div>
+        
+        <form action="{% url 'send_email' %}" method="POST">
+            {% csrf_token %}
+          <p> или попълнете формата: </p>
+          <label for="name">Име и Фамилия</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">e-mail</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Съобщение</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit">Изпрати</button>
+        </form>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+      </section>
+    </main>
+
+{% endblock %}

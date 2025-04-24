@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТОП ИМОТИ - ВТ</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+</head>
+
+<body>
+<div class="wrapper">
+    <header>
+
+      <nav>
+
+        <div class="logo">
+          <img src="{% static 'images/ТОП ИМОТИ - ВТ Логото.jpg' %}" alt="Logo">
+          <h1>ТОП ИМОТИ - ВТ</h1>
+        </div>
+
+        <div class="nav-bar-mobile">
+            <ul>
+                <li class="dropdown">
+                    <a href="">☰</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'home' %}">Начало</a></li>
+                        <li><a href="{% url 'sale' %}">Продажби</a></li>
+                        <li><a href="{% url 'rent' %}">Наеми</a></li>
+                        <li><a href="{% url 'send_email' %}">Контакти</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="nav-bar">
+            <ul>
+              <li><a href="{% url 'home' %}">Начало</a></li>
+              <li><a href="{% url 'sale' %}">Продажби</a></li>
+                <li><a href="{% url 'rent' %}">Наеми</a></li>
+              <li><a href="{% url 'send_email' %}">Контакти</a></li>
+              <li> 📞 +359 88 637 57 96</li>
+            </ul>
+        </div>
+
+      </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+      <p>&copy; 2025 ТОП ИМОТИ - ВТ. Правата са запазени.</p>
+    </footer>
+
+</div>
+
+<script>
+  function toggleMenu() {
+    document.querySelector(".mobile-links").classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

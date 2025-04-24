@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+  <script>
+    // Get all property images from Django dynamically
+  let images = [
+    {% for image in property.images.all %}
+      "{{ image.image.url }}",
+    {% endfor %}
+  ];
+
+  let currentImageIndex = 0;
+
+    // Function to change the main image based on the index
+    function changeImage(index) {
+      if (index < 0) {
+        currentImageIndex = images.length - 1; // If index is negative, go to last image
+      } else if (index >= images.length) {
+        currentImageIndex = 0; // If index exceeds array length, go to first image
+      } else {
+        currentImageIndex = index;
+      }
+      document.getElementById("mainImage").src = images[currentImageIndex];
+    }
+
+    // Function to go to next image
+    function nextImage() {
+      changeImage(currentImageIndex + 1);
+    }
+
+    // Function to go to previous image
+    function prevImage() {
+      changeImage(currentImageIndex - 1);
+    }
+
+  document.addEventListener("DOMContentLoaded", function () {
+
+    let scrollAmount = 0;
+    const scrollStep = 120; // Pixels to scroll per click
+    const thumbnailWrapper = document.querySelector(".thumbnail-images-wrapper");
+    const thumbnails = document.querySelector(".thumbnail-images");
+
+    function scrollThumbnails(direction) {
+      if (!thumbnails || !thumbnailWrapper) return; // Prevent errors if elements are not found
+
+    const maxScroll = thumbnails.scrollWidth - thumbnailWrapper.clientWidth;
+
+    // Scroll left or right
+    scrollAmount += direction * scrollStep;
+
+    // Prevent overscrolling
+    if (scrollAmount < 0) {
+      scrollAmount = 0;
+    } else if (scrollAmount > maxScroll) {
+      scrollAmount = maxScroll;
+    }
+
+    thumbnails.style.transform = `translateX(-${scrollAmount}px)`;
+  }
+
+  // Attach click events to the arrow buttons
+    document.querySelector(".thumbnail-arrow.arrow-left").addEventListener("click", () => scrollThumbnails(-1));
+    document.querySelector(".thumbnail-arrow.arrow-right").addEventListener("click", () => scrollThumbnails(1));
+
+  });
+
+  </script>
+
+
+
+
+    <main>
+      <section class="property-details">
+        <h2>{{ property.title }}</h2>
+        
+            <!-- Flex Container -->
+        <div class="property-details-container">
+            <!-- Images on the Left -->
+            <div class="property-images">
+                <div class="main-image-container">
+                  <button class="arrow-left" onclick="prevImage()">&#10094;</button>
+                  <div class="watermarked-image">
+                    <img id="mainImage" src="{{ property.images.first.image.url }}" alt="{{ property.title }}">
+                    <img class="watermark-logo centered" src="{% static 'images/Лого ТОП ИМОТИ - ВТ НОВО с името БЕЗ ФОН.png' %}" alt="Watermark">
+                  </div>
+                <button class="arrow-right" onclick="nextImage()">&#10095;</button>
+            </div>
+
+            <div class="thumbnail-container">
+              <!--<button class="thumbnail-arrow arrow-left">&#10094;</button>-->
+              <div class="thumbnail-images-wrapper">
+                <div class="thumbnail-images">
+                  {% for image in property.images.all %}
+                    <img src="{{ image.image.url }}" alt="Property Image" onclick="changeImage({{ forloop.counter0 }})">
+                  {% endfor %}
+                </div>
+              </div>
+              <!--<button class="thumbnail-arrow arrow-right">&#10095;</button>-->
+            </div>
+        </div>
+
+            <!-- Property Info on the Right -->
+            <div class="property-info">
+                <p><str class="property-price">€ {{ property.price }}</str>  ({{ property.price_per_meter }} €/кв.м.)</p>
+                <p><strong>Град/Село:</strong> {{ property.location }}</p>
+                <p><strong>Квартал:</strong> {{ property.district }}</p>
+                <p><strong>Площ:</strong> {{ property.area }} кв.м.</p>
+                <p><strong>Етаж:</strong> {{ property.floor }}</p>
+                <p><strong>Стаи:</strong> {{ property.rooms }}</p>
+                <p><strong>Вид строителство:</strong> {{ property.construction_type }}</p>
+                <p><strong>Година на завършване:</strong> {{ property.year_built }} г.</p>
+                <p><strong>Описание:</strong> {{ property.description }}</p>
+                {% if property.property_type == 'rent' %}
+                     <button><a href="{% url 'rent' %}">Към всички оферти - Наеми</a></button>
+                {% elif property.property_type == 'sale' %}
+                    <button><a href="{% url 'sale' %}">Към всички оферти - Продажби</a></button>
+                {% endif %}
+            </div>
+        </div>
+      </section>
+    </main>
+
+{% endblock %}
