@@ -5,15 +5,6 @@ from django.shortcuts import render, redirect
 
 from TopImotiVT.topimoti.models import Property
 
-import traceback
-try:
-    # any initialization code that might fail
-    pass
-except Exception as e:
-    print("=== ERROR ===")
-    traceback.print_exc()
-
-
 def get_properties():
     return Property.objects.all()
 
