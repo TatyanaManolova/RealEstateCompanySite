@@ -43,11 +43,12 @@ def send_email(request):
             send_mail(
                 subject,
                 body,
-                settings.DEFAULT_FROM_EMAIL,
+                email,
                 ["topimotivt@abv.bg"],
                 fail_silently=False,
             )
             messages.success(request, "Съобщението беше изпратено успешно.")
+
         except Exception as e:
             messages.error(request, "Грешка при изпращане на съобщението.")
 
