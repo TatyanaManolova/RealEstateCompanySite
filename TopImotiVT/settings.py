@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 if DEBUG:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 else:
-    ALLOWED_HOSTS = ["topimotivt.onrender.com", ".topimotivt.onrender.com"]
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
 
 INSTALLED_APPS = [
