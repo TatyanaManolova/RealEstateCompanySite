@@ -4,6 +4,8 @@ import dj_database_url
 import environ
 
 from pathlib import Path
+
+from django.contrib import staticfiles
 from dotenv import load_dotenv
 load_dotenv()   # This loads variables from .env
 env = environ.Env()
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
