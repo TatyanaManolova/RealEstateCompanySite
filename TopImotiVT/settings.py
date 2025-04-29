@@ -68,8 +68,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'TopImotiVT.wsgi.application'
 
 
-
-
 if os.getenv("DATABASE_URL"):
     DATABASES = {
         'default': dj_database_url.config(
@@ -122,6 +120,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
