@@ -1,10 +1,11 @@
 
 import os
+import dj_database_url
+import environ
+
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()   # This loads variables from .env
-
-import environ
 env = environ.Env()
 environ.Env.read_env()
 
@@ -15,11 +16,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = "False"
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = ['.onrender.com']
+if DEBUG:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+else:
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
 INSTALLED_APPS = [
@@ -65,16 +68,27 @@ TEMPLATES = [
 WSGI_APPLICATION = 'TopImotiVT.wsgi.application'
 
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DATABASE_NAME"),
-        "USER": os.getenv("DATABASE_USER"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+
+
+if os.getenv("DATABASE_URL"):
+    DATABASES = {
+        'default': dj_database_url.config(
+            default=os.getenv("DATABASE_URL"),
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DATABASE_NAME'),
+            'USER': os.getenv('DATABASE_USER'),
+            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
 
 
 # Password validation
@@ -128,12 +142,6 @@ EMAIL_RECEIVE_HOST = "pop3.abv.bg"
 EMAIL_RECEIVE_PORT = 995
 
 
-import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(
-    default=os.getenv("DATABASE_URL"),
-    conn_max_age=600,
-    ssl_require=True
-)
 
 
