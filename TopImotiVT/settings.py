@@ -147,6 +147,21 @@ EMAIL_RECEIVE_PORT = 995
 
 PORT = os.getenv('PORT', 8000)
 
+import logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'ERROR',
+    },
+}
 
 
 
