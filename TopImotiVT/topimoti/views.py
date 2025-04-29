@@ -1,3 +1,4 @@
+import logging
 from django.conf import settings
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -30,6 +31,9 @@ def home(request):
     return render(request, 'home.html', context)
 
 
+logger = logging.getLogger(__name__)
+
+
 def send_email(request):
     if request.method == "POST":
         name = request.POST.get("name")
@@ -50,6 +54,7 @@ def send_email(request):
             messages.success(request, "Съобщението беше изпратено успешно.")
 
         except Exception as e:
+            logger.error(f"Failed to send email: {e}")
             messages.error(request, "Грешка при изпращане на съобщението.")
 
         return redirect("send_email")
