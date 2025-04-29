@@ -40,7 +40,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,9 +143,6 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_RECEIVE_HOST = "pop3.abv.bg"
 EMAIL_RECEIVE_PORT = 995
 
-PORT = os.getenv('PORT', 8000)
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-SESSION_COOKIE_AGE = 3600  # Set session duration to 1 hour
 
 
