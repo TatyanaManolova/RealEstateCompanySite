@@ -24,7 +24,7 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 if DEBUG:
     ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 else:
-    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+    ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
 INSTALLED_APPS = [
@@ -123,8 +123,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
