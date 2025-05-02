@@ -22,9 +22,10 @@ SECRET_KEY = os.getenv("SECRET_KEY", "dev-secret-key")
 DEBUG = os.getenv("DEBUG", "False") == "True"
 
 
-# ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
-
-ALLOWED_HOSTS = ['topimotivt.onrender.com']
+if DEBUG:
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+else:
+    ALLOWED_HOSTS = ["topimotivt.onrender.com"]
 
 
 INSTALLED_APPS = [
@@ -148,6 +149,19 @@ EMAIL_RECEIVE_PORT = 995
 
 PORT = os.getenv('PORT', 8000)
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'WARNING',
+    },
+}
 
 
 
