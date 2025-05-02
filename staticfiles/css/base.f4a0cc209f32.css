@@ -1,0 +1,163 @@
+
+  html, body {
+    max-width: 1800px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    height: 100%; /* Make the body take up the full viewport height */
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #344d92;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+  }
+
+  header {
+    background-color: #fff; /* White background #fff */
+    color: #B0313A; /* Red text */
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc; /* Subtle bottom border for distinction */
+  }
+
+  header nav {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Space between logo and links */
+  }
+
+  header .logo {
+    display: flex;
+    align-items: center; /* Center logo image and text vertically */
+  }
+
+  header .logo img {
+    width: 170px;
+    height: 100px;
+    margin-right: 15px; /* Space between logo image and company name */
+  }
+
+  header .logo h1 {
+    font-size: 26px; /* Adjust the size for the company name */
+    margin: 0;
+    color: #B0313A; /* Keeps the color consistent */
+  }
+
+  header nav ul {
+    list-style: none;
+    display: flex; /* Flexbox for horizontal links */
+    padding: 0;
+    margin: 0;
+  }
+
+  header nav ul li {
+    font-size: 30px; /* Adjust the size for the navigation links */
+    color: #B0313A; /* Red color for links */
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  header nav ul li a {
+    font-size: 24px; /* Adjust the size for the navigation links */
+    color: #344d92; /* Red color for links */
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+  }
+
+  header nav ul li a:hover {
+    color: #B0313A; /* Black color on hover */
+  }
+
+  nav > img {
+    width: 90px;
+    height: 80px;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+  }
+
+  /* Dropdown Container */
+.dropdown {
+  position: relative;
+}
+
+/* Hide dropdown by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #f0f1f1;
+  border-radius: 12px; /* Rounded corners like buttons */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  width: 160px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow like buttons */
+  transition: all 0.3s ease; /* Smooth transitions */
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Dropdown Menu Items */
+.dropdown-menu li {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Subtle divider */
+}
+
+.dropdown-menu li:last-child {
+  border-bottom: none;
+}
+
+/* Dropdown Links Styled Like Buttons */
+.dropdown-menu li a {
+  font-size: 20px;
+  display: block;
+  padding: 5px 5px;
+  text-decoration: none;
+  color: #344d92;
+  font-weight: bold;
+  border-radius: 12px; /* Match button corners */
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect Matching Button */
+.dropdown-menu li a:hover {
+  background-color: #f0f1f1; /* Dark hover color */
+  color: #B0313A;
+}
+
+/* Arrow Indicator */
+.dropdown > a::after {
+  content: " ▾"; /* Downward arrow */
+  font-size: 12px;
+  margin-left: 5px;
+  color: #344d92;
+}
+
+ main {
+    /*padding: 40px 20px;*/
+    flex: 1; /* Push the footer to the bottom by taking up remaining space */
+    padding: 0 20px; /* Add horizontal padding to match the logo's spacing */
+  }
+
+ footer {
+    background-color: #fff;
+    color: #344d92;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+
+
+
